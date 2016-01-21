@@ -53,7 +53,7 @@
         </p>
         <asp:Panel id="entry" runat="server">
             <asp:Panel ID="namePrompt" runat="server">
-                Please enter your first name:&nbsp; 
+                Please enter your email address:&nbsp; 
                 <asp:TextBox id="firstName" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="firstName" ErrorMessage="** name required **"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="firstName" ErrorMessage="enter an email address" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ViewStateMode="Disabled"></asp:RegularExpressionValidator>
