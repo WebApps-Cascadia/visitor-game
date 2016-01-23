@@ -3,36 +3,36 @@
 
     void Page_Load(Object s, EventArgs e)
     {
-        if(IsPostBack)
+        if (IsPostBack)
         {
-         // Store visitor name in Session and Application
-            Session["visitorName"]= firstName.Text;
-    
+            // Store visitor name in Session and Application
+            Session["visitorName"] = firstName.Text;
+
             Application.Lock();
-                Application["lastVisitor"]= firstName.Text;
+            Application["lastVisitor"] = firstName.Text;
             Application.UnLock();
         }
-    
+
         // Assign the label a value from the Session data
-        visitorName.Text=(string)Session["visitorName"];
+        visitorName.Text = (string)Session["visitorName"];
 
         if (Request.Cookies["memory"] != null)
         {
             this.namePrompt.Visible = false;
             firstName.Text = Request.Cookies["memory"]["visitor"];
-        } 
-            
+        }
+
     }
-    
+
     // Modify the look of the page when the button is clicked
     void join_Click(Object sender, EventArgs e) {
-         // if valid entry show link and hide entry panel
+        // if valid entry show link and hide entry panel
         if (Page.IsValid) {
-                findOut.Visible = true;
-                entry.Visible = false;
+            findOut.Visible = true;
+            entry.Visible = false;
             // add an exclamation to the label
-                message.Text = " , you've joined the game!";
-           }  
+            message.Text = ", you've joined the game!";
+        }
     }
 
 </script>
