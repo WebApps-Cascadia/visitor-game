@@ -1,19 +1,26 @@
 <%@Page language="c#"%>
 <script runat="server">
-	void Page_Load(Object s, EventArgs e) 
-	{
-		//Decide the visitor is the last user and set the banner appropriately
-		if(Application["lastVisitor"]==Session["visitorName"])
-		{
-			winnerBanner.Text = "(you're the last one into the game)"; 
-			winnerMessage.Text ="Y O U &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; W I N";
-		}else
-		{
-			winnerBanner.Text = "The last visitor to sign in was";
-			winnerMessage.Text = (string)Application["lastVisitor"];
-		}
-		visitorName.Text = (string)Session["visitorName"];
-	}
+    void Page_Load(Object s, EventArgs e)
+    {
+        //Decide the visitor is the last user and set the banner appropriately
+        if (Application["lastVisitor"] == Session["visitorName"])
+        {
+            winnerBanner.Text = string.Format("(you're the last one of {0} user sessions in the game)",
+                Application["count"]);
+            winnerMessage.Text = "Y O U &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; W I N";
+        }
+        else
+        {
+            winnerBanner.Text = "The last visitor to sign in was";
+            winnerMessage.Text = (string)Application["lastVisitor"];
+        }
+        visitorName.Text = (string)Session["visitorName"];
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Session.Abandon();
+    }
 </script>
 <html>
 <head>
@@ -29,6 +36,7 @@
 
 </head>
 <body>
+	<form id="form1" runat="server">
 	<h2>
 	<asp:label class="name" ID="visitorName" runat="server"/>,
  		Welcome to the Visitor Game <br>
@@ -37,6 +45,10 @@
   <span style="text-align:left;font-size:60%;color:#000099">
    <a href="default.aspx">back 
   to sign-in</a></span> </h2>
+        <p>
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Quit" />
+        </p>
+    </form>
 </body>
 </html>
 
