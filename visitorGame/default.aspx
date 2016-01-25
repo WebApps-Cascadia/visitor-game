@@ -14,7 +14,7 @@
         }
     
         // Assign the label a value from the Session data
-        visitorName.Text=(string)Session["visitorName"];
+        visitorName.Text = (string)Session["visitorName"];
 
         if (Request.Cookies["memory"] != null)
         {
