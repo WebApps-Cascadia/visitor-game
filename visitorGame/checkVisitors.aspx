@@ -21,6 +21,16 @@
 
 
     }
+
+    protected void BtnQuit_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void Btn_Quit(object sender, EventArgs e)
+    {
+        Session.Abandon();
+    }
 </script>
 <html>
 <head>
@@ -36,6 +46,7 @@
 
 </head>
 <body>
+	<form id="form1" runat="server">
 	<h2>
 	<asp:label class="name" ID="visitorName" runat="server"/>,
  		Welcome to the Visitor Game <br>
@@ -46,7 +57,11 @@
   to sign-in</a></span> </h2>
 
 
-    Total counter: <asp:label class="name" ID="Counter" runat="server"/><br/>
+    Total counter: <asp:label class="name" ID="Counter" runat="server"/>
+        <br />
+        <asp:Button ID="Button1" runat="server" OnClick="Btn_Quit" Text="Quit" />
+        <br/>
+    </form>
 </body>
 </html>
 
