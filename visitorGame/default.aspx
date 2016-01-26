@@ -3,6 +3,7 @@
 
     void Page_Load(Object s, EventArgs e)
     {
+        
         if(IsPostBack)
         {
          // Store visitor name in Session and Application
@@ -10,6 +11,7 @@
     
             Application.Lock();
                 Application["lastVisitor"]= firstName.Text;
+                
             Application.UnLock();
         }
     

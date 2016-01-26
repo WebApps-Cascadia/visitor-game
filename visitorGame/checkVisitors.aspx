@@ -1,19 +1,20 @@
 <%@Page language="c#"%>
 <script runat="server">
-	void Page_Load(Object s, EventArgs e) 
-	{
-		//Decide the visitor is the last user and set the banner appropriately
-		if(Application["lastVisitor"]==Session["visitorName"])
-		{
-			winnerBanner.Text = "(you're the last one into the game)"; 
-			winnerMessage.Text ="Y O U &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; W I N";
-		}else
-		{
-			winnerBanner.Text = "The last visitor to sign in was";
-			winnerMessage.Text = (string)Application["lastVisitor"];
-		}
-		visitorName.Text = (string)Session["visitorName"];
-	}
+    
+    void Page_Load(Object s, EventArgs e)
+    {
+        //Decide the visitor is the last user and set the banner appropriately
+        if(Application["lastVisitor"]==Session["visitorName"])
+        {
+            winnerBanner.Text = "(you're the last one of " + Application["OnlineCounter"] + " user sessions in the game)";
+            winnerMessage.Text ="Y O U &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; W I N";
+        }else
+        {
+            winnerBanner.Text = "The last visitor to sign in was";
+            winnerMessage.Text = (string)Application["lastVisitor"];
+        }
+        visitorName.Text = (string)Session["visitorName"];
+    }
 </script>
 <html>
 <head>
